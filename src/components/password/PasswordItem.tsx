@@ -9,7 +9,10 @@ export const PasswordItem = (): JSX.Element => {
     <div className='flex justify-center items-center mx-4'>
       <div className='mr-4'>
         <CopyToClipboard text={'XGH7612'} onCopy={onCopyValue}>
-          <button className='box-border focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 rounded-md p-3'>
+          <button
+            type='button'
+            className='box-border focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 rounded-md p-3'
+          >
             <DuplicateIcon className='h-8 w-8 text-gray-400' />
           </button>
         </CopyToClipboard>
@@ -23,7 +26,10 @@ export const PasswordItem = (): JSX.Element => {
         />
       </div>
       <div className='h-16 flex items-center'>
-        <button className='focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 rounded-md h-full'>
+        <button
+          type='button'
+          className='focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 rounded-md h-full'
+        >
           <DotsVerticalIcon className='h-8 w-8 text-gray-400' />
         </button>
       </div>
