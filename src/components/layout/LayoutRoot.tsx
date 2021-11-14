@@ -5,7 +5,7 @@ type IProps = {
   children: React.ReactNode
 }
 
-export const LayoutRoot = ({ children }: IProps) => {
+export const LayoutRoot = ({ children }: IProps): JSX.Element => {
   return (
     <div className='bg-gray-200 min-h-screen'>
       {/* Header */}

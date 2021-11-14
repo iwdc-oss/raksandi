@@ -1,6 +1,6 @@
 import { MenuAlt1Icon } from '@heroicons/react/outline'
 
-export const NavigationTop = () => {
+export const NavigationTop = (): JSX.Element => {
   return (
     <div className='max-w-xl mx-auto py-4 bg-blue-600'>
       <div className='flex justify-end items-center mx-8'>
