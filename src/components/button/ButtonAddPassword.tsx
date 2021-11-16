@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react'
 import { PlusIcon } from '@heroicons/react/outline'
 
-type IProps = {
-  handleToggle(): void
-}
-
-export const ButtonAddPassword = ({ handleToggle }: IProps): JSX.Element => {
+export const ButtonAddPassword = ({ handleToggle }: { handleToggle(): void }): JSX.Element => {
   return (
     <div className='flex justify-end mr-8'>
       <button
