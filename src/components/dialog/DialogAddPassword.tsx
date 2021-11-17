@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { InputBase } from '~/src/components/input/InputBase'
 import { ButtonBase } from '~/src/components/button/ButtonBase'
 import generator from 'generate-password'
+import { useAppDispatch, useAppSelector } from '~/src/hooks/useReduxHooks'
+import { addPassword } from '~/src/app/features/password'
 
-type IProps = {
-  handleToggle(): void
-}
-
-export const DialogAddPassword = ({ handleToggle }: IProps): JSX.Element => {
+export const DialogAddPassword = ({ handleToggle }: { handleToggle(): void }): JSX.Element => {
+  const passwordList = useAppSelector((state) => state.password.passwordList)
+  const dispatch = useAppDispatch()
   const [passwordValue, setPasswordValue] = useState<string>('')
   const handleStopCapturing = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.stopPropagation()
@@ -24,11 +24,16 @@ export const DialogAddPassword = ({ handleToggle }: IProps): JSX.Element => {
     setPasswordValue(e.target.value)
   }
   const handleCreatePassword = (): void => {
+    const isPasswordExist: boolean = passwordList.some((password) => password === passwordValue)
+    if (isPasswordExist) {
+      alert('Password already exist')
+      return
+    }
     if (!passwordValue) {
       alert('Password is empty')
       return
     }
-    alert(passwordValue)
+    dispatch(addPassword(passwordValue))
   }
   return (
     <div className='absolute inset-0 bg-black bg-opacity-40' onClick={() => handleToggle()}>
