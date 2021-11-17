@@ -14,8 +14,12 @@ export const passwordSlice = createSlice({
     addPassword: (state, action): void => {
       state.passwordList = [...state.passwordList, action.payload]
     },
+    deletePassword: (state, action): void => {
+      const passwordIndex = state.passwordList.indexOf(action.payload)
+      state.passwordList.splice(passwordIndex, 1)
+    },
   },
 })
 
-export const { addPassword } = passwordSlice.actions
+export const { addPassword, deletePassword } = passwordSlice.actions
 export default passwordSlice.reducer

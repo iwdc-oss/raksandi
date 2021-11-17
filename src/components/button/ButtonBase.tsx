@@ -15,7 +15,10 @@ export const ButtonBase = ({
   return (
     <button
       onClick={onClick}
-      className={`${className} hover:bg-gray-100 tracking-wider px-2 rounded-md border-2 border-gray-400 ${textColor} w-full h-full text-base sm:text-sm font-semibold`}
+      className={`${className} ${textColor} 
+      hover:bg-gray-100 tracking-wider px-2 rounded-md border-2 
+      border-gray-400 w-full h-full text-base sm:text-sm 
+      font-semibold`}
       {...props}
     >
       {children}
