@@ -4,6 +4,7 @@ import { LayoutRoot } from '~/src/components/layout/LayoutRoot'
 import 'tailwindcss/tailwind.css'
 import { store } from '~/src/app/store'
 import { Provider } from 'react-redux'
+import { Provider as SessionProvider } from 'next-auth/client'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -11,9 +12,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Rak Sandi</title>
       </Head>
-      <LayoutRoot>
-        <Component {...pageProps} />
-      </LayoutRoot>
+      <SessionProvider session={pageProps.session}>
+        <LayoutRoot>
+          <Component {...pageProps} />
+        </LayoutRoot>
+      </SessionProvider>
     </Provider>
   )
 }
