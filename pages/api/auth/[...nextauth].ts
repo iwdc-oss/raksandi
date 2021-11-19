@@ -28,7 +28,11 @@ export default NextAuth({
     // Notes: Get data from users (google account)
     async signIn({ user, account, profile, email, credentials }) {
       // console.log(user, account, profile, email, credentials)
-      return true
+      if (email) {
+        return true
+      } else {
+        return false
+      }
     },
   },
 })

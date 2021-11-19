@@ -1,5 +1,7 @@
-import Link from 'next/link'
 import { signIn, signOut, useSession, getProviders, ClientSafeProvider } from 'next-auth/client'
+import { ButtonBase } from '~/src/components/button/ButtonBase'
+import { FcGoogle } from 'react-icons/fc'
+import Image from 'next/image'
 
 type Providers = {
   google: ClientSafeProvider
@@ -15,15 +17,28 @@ export default function Home({ providers }: { providers: Providers }) {
     <div>
       <h1 className='text-4xl font-bold text-center font-cairo mb-4'>Rak Sandi</h1>
       <h1 className='text-center text-2xl font-cairo'>Rapikan kata sandi Anda seperti sepatu di rak </h1>
-      <h1 className='mt-6 font-poppins h-full leading-normal font-extrabold text-5xl text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500'>
-        Coming Soon!
-      </h1>
-      <Link href='/private/nurulakbaral'>
-        <a className='mt-6 text-center font-cairo block'>To Dasboard</a>
-      </Link>
-      <div>{!session && <button onClick={() => signIn(google.id)}>Log in with Google</button>}</div>
-      <div>{session && <h1>Anda sudah login sebagai {session.user?.name}</h1>}</div>
-      <div>{session && <button onClick={() => signOut()}>Logout with Google</button>}</div>
+      <div className='text-center'>
+        <Image alt='Rak Sandi' src='/images/illustration/ill_dashboard.svg' width={400} height={400} quality={100} />
+      </div>
+      {!session && (
+        <div className='h-14 w-3/4 mx-auto mb-12'>
+          <ButtonBase
+            icon={<FcGoogle className='w-6 h-6 mr-6' />}
+            onClick={() =>
+              signIn(google.id, {
+                callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/home`,
+              })
+            }
+          >
+            Log in with Google
+          </ButtonBase>
+        </div>
+      )}
+      {session && (
+        <div className='h-14 w-3/4 mx-auto'>
+          <ButtonBase onClick={() => signOut()}>Logout</ButtonBase>
+        </div>
+      )}
     </div>
   )
 }
