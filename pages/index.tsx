@@ -33,7 +33,7 @@ export default function Home({ providers }: { providers: Providers }) {
           <ButtonBase
             icon={<FcGoogle className='w-6 h-6 mr-6' />}
             onClick={() =>
-              signIn(google.id, {
+              signIn(google?.id, {
                 callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard`,
               })
             }
