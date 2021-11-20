@@ -28,7 +28,7 @@ export const PasswordItem = ({ value, ...props }: { value: string }): JSX.Elemen
         <CopyToClipboard text={value} onCopy={onCopyValue}>
           <button
             type='button'
-            className='box-border focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 rounded-md p-3'
+            className='box-border focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 rounded-full p-2'
           >
             <DuplicateIcon className='h-8 w-8 text-gray-400' />
           </button>
@@ -42,13 +42,13 @@ export const PasswordItem = ({ value, ...props }: { value: string }): JSX.Elemen
           onFocus={() => setToggle(true)}
           onBlur={handleBlurMenu}
           type='button'
-          className='focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 rounded-md h-full'
+          className='focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 p-2 rounded-full'
         >
           <DotsVerticalIcon className='h-8 w-8 text-gray-400' />
         </button>
       </div>
       <div className='flex justify-center bg-yellow-600 relative'>
-        {toggle && <MenuPassword setActionsMenu={setActionsMenu} />}
+        {toggle && <MenuPassword setState={setActionsMenu} />}
       </div>
       {actionsMenu === 'delete' && (
         <div className='absolute inset-0 bg-black bg-opacity-40'>
