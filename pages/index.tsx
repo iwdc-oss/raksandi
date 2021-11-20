@@ -1,4 +1,4 @@
-import { signIn, signOut, useSession, getProviders, ClientSafeProvider } from 'next-auth/client'
+import { signIn, useSession, getProviders, ClientSafeProvider } from 'next-auth/client'
 import { ButtonBase } from '~/src/components/button/ButtonBase'
 import { FcGoogle } from 'react-icons/fc'
 import Image from 'next/image'
@@ -26,17 +26,12 @@ export default function Home({ providers }: { providers: Providers }) {
             icon={<FcGoogle className='w-6 h-6 mr-6' />}
             onClick={() =>
               signIn(google.id, {
-                callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/home`,
+                callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard`,
               })
             }
           >
             Log in with Google
           </ButtonBase>
-        </div>
-      )}
-      {session && (
-        <div className='h-14 w-3/4 mx-auto'>
-          <ButtonBase onClick={() => signOut()}>Logout</ButtonBase>
         </div>
       )}
     </div>
