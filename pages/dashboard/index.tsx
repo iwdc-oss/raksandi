@@ -6,6 +6,7 @@ import { DialogAddPassword } from '~/src/components/dialog/DialogAddPassword'
 import { useAppSelector } from '~/src/hooks/useReduxHooks'
 import { useSession } from 'next-auth/client'
 import { ButtonBase } from '~/src/components/button/ButtonBase'
+import { CollectionIcon } from '@heroicons/react/outline'
 
 export default function Dashboard() {
   const [toggle, setToggle] = useState<boolean>(false)
@@ -22,7 +23,7 @@ export default function Dashboard() {
           You dont have access yet, please login first with a google account.
         </p>
         <div className='h-14 w-3/4 mx-auto mt-12'>
-          <ButtonBase onClick={() => router.push('/')}>Back to Home</ButtonBase>
+          <ButtonBase onClick={() => router.push('/')}>Back to home</ButtonBase>
         </div>
       </div>
     )
@@ -30,6 +31,12 @@ export default function Dashboard() {
   return (
     <div>
       <div>
+        {!passwordList.length && (
+          <div className='flex flex-col items-center mt-32'>
+            <CollectionIcon className='h-10 w-10 mb-4 text-gray-400' />
+            <h1 className='font-poppins text-2xl text-center font-medium text-gray-400'>Password list is empty</h1>
+          </div>
+        )}
         {passwordList.map((passwordValue) => (
           <PasswordItem key={passwordValue} value={passwordValue} />
         ))}
