@@ -9,10 +9,10 @@ import (
 )
 
 func NewConnection() *sql.DB {
-	DB_NAME := os.Getenv("DB_NAME")
-	DB_PASSWORD := os.Getenv("DB_PASSWORD")
+	dbName := os.Getenv("DB_NAME")
+	dbPassword := os.Getenv("DB_PASSWORD")
 
-	db, err := sql.Open("mysql", DB_NAME+":"+DB_PASSWORD+"@tcp(localhost:3306)/raksandi?parseTime=true")
+	db, err := sql.Open("mysql", dbName+":"+dbPassword+"@tcp(localhost:3306)/raksandi?parseTime=true&tls=true")
 	if err != nil {
 		panic(err)
 	}

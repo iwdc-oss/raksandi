@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ### Update new password
-PUT http://localhost:3000/api/users/1/passwords/8
+PUT http://localhost:3000/api/users/1/passwords/10
 Accept: application/json
 Content-Type: application/json
 
@@ -17,12 +17,12 @@ Content-Type: application/json
 }
 
 ### Delete new password
-DELETE  http://localhost:3000/api/users/1/passwords/5
+DELETE  http://localhost:3000/api/users/1/passwords/10
 Accept: application/json
 Content-Type: application/json
 
 ### Find By Id password
-GET  http://localhost:3000/api/users/1/passwords/8
+GET  http://localhost:3000/api/users/1/passwords/10
 Accept: application/json
 Content-Type: application/json
 
