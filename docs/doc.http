@@ -1,0 +1,32 @@
+### Create new password
+POST http://localhost:3000/api/users/1/passwords
+Accept: application/json
+Content-Type: application/json
+
+{
+  "hashed_password": "testtastis"
+}
+
+### Update new password
+PUT http://localhost:3000/api/users/1/passwords/10
+Accept: application/json
+Content-Type: application/json
+
+{
+  "hashed_password": "halohay"
+}
+
+### Delete new password
+DELETE  http://localhost:3000/api/users/1/passwords/10
+Accept: application/json
+Content-Type: application/json
+
+### Find By Id password
+GET  http://localhost:3000/api/users/1/passwords/10
+Accept: application/json
+Content-Type: application/json
+
+### Find All password
+GET  http://localhost:3000/api/users/1/passwords
+Accept: application/json
+Content-Type: application/json
