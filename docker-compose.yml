@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  raksandi-mysql:
+    image: mysql:8.0.27
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=rahasia
+      - MYSQL_DATABASE=raksandi
+    volumes:
+      -  ./server/docs/doc.sql:/docker-entrypoint-initdb.d/doc.sql
+  raksandi-backend:
+    image: madjiebimaa/raksandi-backend:1.0
+    ports:
+      - 3000:3000
+    environment:
+      - MYSQL_HOST=raksandi-mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=rahasia
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=raksandi
+    depends_on:
+      - raksandi-mysql

@@ -4,7 +4,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "hashed_password": "testtastis"
+  "hashed_password": "testing"
 }
 
 ### Update new password
@@ -13,7 +13,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "hashed_password": "halohay"
+  "hashed_password": "hello world"
 }
 
 ### Delete new password

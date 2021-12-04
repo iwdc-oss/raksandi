@@ -2,20 +2,29 @@ package apps
 
 import (
 	"database/sql"
+	"fmt"
 	"os"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/iwdc-oss/raksandi/helpers"
+	"github.com/joho/godotenv"
 )
 
 func NewConnection() *sql.DB {
-	DB_NAME := os.Getenv("DB_NAME")
-	DB_PASSWORD := os.Getenv("DB_PASSWORD")
+	err := godotenv.Load(".env")
+	helpers.PanicIfError(err)
 
-	db, err := sql.Open("mysql", DB_NAME+":"+DB_PASSWORD+"@tcp(localhost:3306)/raksandi?parseTime=true")
-	if err != nil {
-		panic(err)
-	}
+	mysqlUser := os.Getenv("MYSQL_USER")
+	mysqlPassword := os.Getenv("MYSQL_PASSWORD")
+	mysqlHost := os.Getenv("MYSQL_HOST")
+	mysqlPort := os.Getenv("MYSQL_PORT")
+	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
+
+	fmt.Println(mysqlUser, mysqlPassword, mysqlHost, mysqlPort, mysqlDatabase)
+
+	db, err := sql.Open("mysql", mysqlUser+":"+mysqlPassword+"@tcp("+mysqlHost+":"+mysqlPort+")/"+mysqlDatabase+"?parseTime=true")
+	helpers.PanicIfError(err)
 
 	db.SetConnMaxLifetime(time.Minute * 60)
 	db.SetMaxOpenConns(60)
